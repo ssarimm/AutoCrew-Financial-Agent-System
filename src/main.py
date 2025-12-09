@@ -6,14 +6,22 @@ from src.mrm_crew import MRMCrew
 
 def main():
     print("==========================================")
-    print("🤖 FINANCIAL AGENT SYSTEM (CrewAI + Groq)")
+    print("🤖 FINANCIAL AGENT SYSTEM (CrewAI + LLMs)")
     print("==========================================")
 
-    # 1. SETUP
-    print("\nSelect LLM:")
-    print("1. Groq (Llama 3)")
-    print("2. Google Gemini")
-    llm_choice = input("Choice (1-2): ")
+   
+    print("\nSelect LLM Provider:")
+    print("1. Groq (Llama 3.1 8B)")
+    print("2. Google Gemini 1.5 Flash")
+    print("3. Ollama (Local LLM)")
+    print("4. MOCK LLM")
+    llm_choice = input("Choice (1-4): ") 
+    
+    
+    if llm_choice not in ['1', '2', '3', '4']: 
+        print("Invalid LLM choice. Exiting.")
+        sys.exit()
+        
     llm = get_llm(llm_choice)
 
     print("\nSelect Task:")
@@ -32,25 +40,26 @@ def main():
         dataset = "data/cs-training.csv"
         task_desc = "Predict probability of financial distress (Credit Scoring)."
     else:
-        print("Invalid choice.")
+        print("Invalid task choice. Exiting.")
         sys.exit()
 
-    if not os.path.exists(dataset):
+   
+    if llm_choice != '4' and not os.path.exists(dataset):
         print(f"\nERROR: Dataset not found: {dataset}")
         print(f"Please download it and save it to the 'data/' folder.")
         sys.exit()
 
-    #running modeling crew
-    print(f"\nStarting Modeling Phase for: {task_desc}")
+    # running modeling crew
+    print(f"\nStarting Modeling Phase for: {task_desc} using LLM choice: {llm_choice}")
     model_crew = ModelingCrew(llm)
     modeling_output = model_crew.run(dataset, task_desc)
     
     print("\nModeling Output:")
     print(modeling_output)
 
-    #human intervention
+    # human intervention
     print("\n" + "="*40)
-    print("HUMAN INTERVENTION")
+    print("HUMAN INTERVENTION (MRM Audit Gate)")
     proceed = input("Proceed to Audit? (y/n): ")
     if proceed.lower() != 'y':
         sys.exit()
