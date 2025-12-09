@@ -1,0 +1,7 @@
+crewai
+crewai-tools
+langchain-groq
+langchain-google-genai
+pandas
+scikit-learn
+python-dotenv

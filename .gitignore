@@ -1,0 +1,23 @@
+# Virtual environment folder
+venv/
+.venv/
+env/
+
+# Python compiled files
+__pycache__/
+*.pyc
+*.pyo
+
+# Operating System files
+.DS_Store
+Thumbs.db
+
+# CRITICAL: Security & Credentials
+.env
+
+# CrewAI/LangChain specific temporary files
+temp_script.py
+output_report.md
+final_report.md
+model_output.json
+*.log
