@@ -87,8 +87,5 @@ detailed report approved by the Chief Risk Officer.
   <li>All agent actions are logged for auditability, meeting Model Risk Management standards.</li>
 </ul>
 
-<h2>📜 License</h2>
-<p>[Specify your license here: MIT, Apache 2.0, etc.]</p>
-
 <h2>🤝 Contact</h2>
 <p><b>Sarim Shah</b> — <a href="mailto:sarimoman@gmail.com">sarimoman@gmail.com</a></p>
